@@ -112,4 +112,5 @@ $(document).ready(() => {
     //=========================================================================
     content += `<h2>${HariSaranam.verse1.replaceAll('\n', '</br>')}</h2>`;
     $('#root').html(content);
+    // console.log(content);
 });

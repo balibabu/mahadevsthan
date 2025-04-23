@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Melodies - Aarti & Bhajans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tangerine:wght@700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+        }
+        
+        .logo-text {
+            font-family: 'Tangerine', cursive;
+        }
+        
+        .deity-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .deity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .audio-player {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #f59e0b;
+            border-radius: 3px;
+            width: 0%;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="bg-white p-2 rounded-full mr-4">
+                        <i class="fas fa-om text-amber-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="logo-text text-4xl md:text-5xl font-bold">Divine Melodies</h1>
+                        <p class="text-sm md:text-base">Aarti & Bhajans Collection</p>
+                    </div>
+                </div>
+                <nav class="flex space-x-1 md:space-x-6">
+                    <a href="#home" class="nav-link active-nav px-3 py-2 text-sm md:text-base font-medium">Home</a>
+                    <a href="#aartis" class="nav-link px-3 py-2 text-sm md:text-base font-medium">Aartis</a>
+                    <a href="#bhajans" class="nav-link px-3 py-2 text-sm md:text-base font-medium">Bhajans</a>
+                    <a href="#about" class="nav-link px-3 py-2 text-sm md:text-base font-medium">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-cover bg-center h-96 md:h-screen" style="background-image: url('https://images.unsplash.com/photo-1589998059171-988d322b03dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="container mx-auto px-4 h-full flex flex-col justify-center relative z-10 text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn" style="animation-delay: 0.2s;">Experience Divine Bliss</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl animate-fadeIn" style="animation-delay: 0.4s;">Immerse yourself in the sacred Aartis and Bhajans of Hindu Gods and Goddesses</p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fadeIn" style="animation-delay: 0.6s;">
+                <a href="#aartis" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full text-center transition duration-300">
+                    Explore Aartis
+                </a>
+                <a href="#bhajans" class="bg-transparent hover:bg-white hover:text-amber-600 text-white font-bold py-3 px-6 border-2 border-white rounded-full text-center transition duration-300">
+                    Listen to Bhajans
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aartis Section -->
+    <section id="aartis" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sacred Aartis</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Traditional devotional songs sung in praise of Hindu deities during worship</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Aarti Card 1 -->
+                <div class="deity-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Lord Ganesha" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">Ganesh Aarti</h3>
+                            <p class="text-amber-300">Lord Ganesha</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <button class="play-btn w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <span class="text-sm text-gray-600">2:45</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center">
+                                <i class="fas fa-heart mr-2"></i> Favorite
+                            </button>
+                            <button class="text-gray-600 hover:text-gray-800 flex items-center">
+                                <i class="fas fa-share-alt mr-2"></i> Share
+                            </button>
+                            <button class="text-gray-600 hover:text-gray-800 flex items-center">
+                                <i class="fas fa-download mr-2"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aarti Card 2 -->
+                <div class="deity-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Lord Shiva" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">Shiva Aarti</h3>
+                            <p class="text-amber-300">Lord Shiva</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <button class="play-btn w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <span class="text-sm text-gray-600">3:12</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center">
+                                <i class="fas fa-heart mr-2"></i> Favorite
+                            </button>
+                            <button class="text-gray-600 hover:text-gray-800 flex items-center">
+                                <i class="fas fa-share-alt mr-2"></i> Share
+                            </button>
+                            <button class="text-gray-600 hover:text-gray-800 flex items-center">
+                                <i class="fas fa-download mr-2"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aarti Card 3 -->
+                <div class="deity-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Goddess Lakshmi" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">Lakshmi Aarti</h3>
+                            <p class="text-amber-300">Goddess Lakshmi</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <button class="play-btn w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <span class="text-sm text-gray-600">2:58</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center">
+                                <i class="fas fa-heart mr-2"></i> Favorite
+                            </button>
+                            <button class="text-gray-600 hover:text-gray-800 flex items-center">
+                                <i class="fas fa-share-alt mr-2"></i> Share
+                            </button>
+                            <button class="text-gray-600 hover:text-gray-800 flex items-center">
+                                <i class="fas fa-download mr-2"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    View All Aartis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bhajans Section -->
+    <section id="bhajans" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Devotional Bhajans</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Spiritual songs expressing love and devotion to the divine</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Bhajan List 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gradient-to-r from-orange-500 to-amber-600 p-4 text-white">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fas fa-music mr-3"></i> Krishna Bhajans
+                        </h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="space-y-4">
+                            <!-- Bhajan Item 1 -->
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg transition">
+                                <div class="flex items-center">
+                                    <button class="play-btn w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center mr-4">
+                                        <i class="fas fa-play text-xs"></i>
+                                    </button>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Hare Krishna Hare Rama</h4>
+                                        <p class="text-xs text-gray-500">Traditional</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-600">4:32</span>
+                            </div>
+                            
+                            <!-- Bhajan Item 2 -->
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg transition">
+                                <div class="flex items-center">
+                                    <button class="play-btn w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center mr-4">
+                                        <i class="fas fa-play text-xs"></i>
+                                    </button>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Govinda Bolo Hari Gopal Bolo</h4>
+                                        <p class="text-xs text-gray-500">Traditional</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-600">3:45</span>
+                            </div>
+                            
+                            <!-- Bhajan Item 3 -->
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg transition">
+                                <div class="flex items-center">
+                                    <button class="play-btn w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center mr-4">
+                                        <i class="fas fa-play text-xs"></i>
+                                    </button>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Shri Krishna Sharanam Mamah</h4>
+                                        <p class="text-xs text-gray-500">Traditional</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-600">5:12</span>
+                            </div>
+                            
+                            <!-- Bhajan Item 4 -->
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg transition">
+                                <div class="flex items-center">
+                                    <button class="play-btn w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center mr-4">
+                                        <i class="fas fa-play text-xs"></i>
+                                    </button>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Madhurashtakam</h4>
+                                        <p class="text-xs text-gray-500">Vallabhacharya</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-600">6:28</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bhajan List 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gradient-to-r from-orange-500 to-amber-600 p-4 text-white">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fas fa-music mr-3"></i> Shiva Bhajans
+                        </h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="space-y-4">
+                            <!-- Bhajan Item 1 -->
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg transition">
+                                <div class="flex items-center">
+                                    <button class="play-btn w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center mr-4">
+                                        <i class="fas fa-play text-xs"></i>
+                                    </button>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Om Namah Shivaya</h4>
+                                        <p class="text-xs text-gray-500">Traditional</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-600">7:15</span>
+                            </div>
+                            
+                            <!-- Bhajan Item 2 -->
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg transition">
+                                <div class="flex items-center">
+                                    <button class="play-btn w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center mr-4">
+                                        <i class="fas fa-play text-xs"></i>
+                                    </button>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Shiva Shankara</h4>
+                                        <p class="text-xs text-gray-500">Traditional</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-600">4:50</span>
+                            </div>
+                            
+                            <!-- Bhajan Item 3 -->
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg transition">
+                                <div class="flex items-center">
+                                    <button class="play-btn w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center mr-4">
+                                        <i class="fas fa-play text-xs"></i>
+                                    </button>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Shiva Tandava Stotram</h4>
+                                        <p class="text-xs text-gray-500">Ravana</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-600">8:42</span>
+                            </div>
+                            
+                            <!-- Bhajan Item 4 -->
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-100 rounded-lg transition">
+                                <div class="flex items-center">
+                                    <button class="play-btn w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center mr-4">
+                                        <i class="fas fa-play text-xs"></i>
+                                    </button>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Mahamrityunjaya Mantra</h4>
+                                        <p class="text-xs text-gray-500">Vedic</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-600">6:05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    Explore More Bhajans
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Deity -->
+    <section class="py-16 bg-gradient-to-r from-orange-500 to-amber-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lord Krishna" class="w-full h-auto rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Lord Krishna</h2>
+                    <p class="text-lg mb-6">The supreme deity worshipped across many traditions of Hinduism. Krishna is often described as the eighth avatar of Vishnu and is considered the Supreme God in his own right.</p>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-3">Popular Bhajans:</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-200 mr-3"></i>
+                                <span>Hare Krishna Maha Mantra</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-200 mr-3"></i>
+                                <span>Govinda Bolo Hari Gopal Bolo</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-200 mr-3"></i>
+                                <span>Shri Krishna Sharanam Mamah</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" class="inline-block bg-white hover:bg-gray-100 text-amber-600 font-bold py-3 px-8 rounded-full transition duration-300">
+                        Explore Krishna Bhajans
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">About Divine Melodies</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-lg text-gray-600 mb-8">
+                    Divine Melodies is a sacred space dedicated to preserving and sharing the devotional music of Hinduism. 
+                    Our mission is to make these spiritual treasures accessible to everyone, helping devotees connect with 
+                    the divine through the power of music and mantra.
+                </p>
+                <p class="text-lg text-gray-600 mb-8">
+                    We carefully curate traditional aartis and bhajans, ensuring authentic renditions that maintain the 
+                    spiritual essence of these devotional songs. Whether you're seeking peace, devotion, or simply 
+                    beautiful sacred music, Divine Melodies offers a gateway to spiritual experience.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <i class="fas fa-heart text-4xl text-amber-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Devotion</h3>
+                        <p class="text-gray-600">Experience pure devotion through sacred music</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <i class="fas fa-om text-4xl text-amber-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Tradition</h3>
+                        <p class="text-gray-600">Authentic renditions of traditional compositions</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <i class="fas fa-spa text-4xl text-amber-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Peace</h3>
+                        <p class="text-gray-600">Find inner peace through divine melodies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Stay Connected</h2>
+                <p class="text-gray-600 mb-6">Subscribe to receive updates on new aartis, bhajans, and spiritual content</p>
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Divine Melodies</h3>
+                    <p class="text-gray-400">Connecting devotees to the divine through sacred music and devotion.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Aartis</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Bhajans</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Popular Deities</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Lord Krishna</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Lord Shiva</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Goddess Lakshmi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Lord Ganesha</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Goddess Durga</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3"></i> Vrindavan, Uttar Pradesh
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3"></i> +91 98765 43210
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i> contact@divinemelodies.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Divine Melodies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio Player Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simple audio player functionality
+            const playButtons = document.querySelectorAll('.play-btn');
+            let currentAudio = null;
+            
+            playButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const parentCard = this.closest('.deity-card, .flex.items-center');
+                    
+                    // Stop currently playing audio if any
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        const currentButton = document.querySelector('.play-btn .fa-pause');
+                        if (currentButton) {
+                            currentButton.classList.remove('fa-pause');
+                            currentButton.classList.add('fa-play');
+                        }
+                    }
+                    
+                    // Change icon to pause
+                    const icon = this.querySelector('i');
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    
+                    // Simulate audio play (in a real app, this would be actual audio)
+                    currentAudio = new Audio();
+                    
+                    // Update progress bar (simulated)
+                    const progressBar = parentCard.querySelector('.progress');
+                    let progress = 0;
+                    const interval = setInterval(() => {
+                        progress += 1;
+                        progressBar.style.width = `${progress}%`;
+                        
+                        if (progress >= 100) {
+                            clearInterval(interval);
+                            icon.classList.remove('fa-pause');
+                            icon.classList.add('fa-play');
+                            progressBar.style.width = '0%';
+                        }
+                    }, 100);
+                    
+                    // Change back to play when "audio ends"
+                    currentAudio.onended = function() {
+                        icon.classList.remove('fa-pause');
+                        icon.classList.add('fa-play');
+                        progressBar.style.width = '0%';
+                        clearInterval(interval);
+                    };
+                    
+                    // Pause on click if already playing
+                    this.onclick = function() {
+                        if (icon.classList.contains('fa-pause')) {
+                            icon.classList.remove('fa-pause');
+                            icon.classList.add('fa-play');
+                            if (currentAudio) currentAudio.pause();
+                            clearInterval(interval);
+                        }
+                    };
+                });
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active-nav');
+                    });
+                    this.classList.add('active-nav');
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Highlight active section in navigation
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                
+                document.querySelectorAll('section').forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        const id = section.getAttribute('id');
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active-nav');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active-nav');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -4,23 +4,1069 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="om.png" type="image/x-icon">
-    <title>Mahadevsthan ♆</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Mahadevsthan Bhajans - Divine Melodies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Tangerine:wght@700&display=swap');
+        
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f8f5f0;
+            color: #333;
+        }
+        
+        .title-font {
+            font-family: 'Tangerine', cursive;
+        }
+        
+        .bg-sacred {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+        }
+        
+        .bhajan-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .bhajan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .audio-player {
+            background: linear-gradient(to right, #e0e6f0, #f0f4fa);
+        }
+        
+        .lyrics-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .lyrics-container.show {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+        
+        .trishul-divider {
+            position: relative;
+            height: 30px;
+        }
+        
+        .trishul-divider::before {
+            content: "卐";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #d97706;
+        }
+        
+        .floating-lamp {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .om-symbol {
+            font-family: 'Tangerine', cursive;
+        }
+    </style>
 </head>
-<body>
-    <div id="root" style="text-align: center; font-weight: bold;"></div>
-    <script src="mantras/MangalamBhagwan.js"></script>
-    <script src="mantras/GaneshBandana.js"></script>
-    <script src="mantras/Govinda.js"></script>
-    <script src="mantras/Aadinath.js"></script>
-    <script src="mantras/KaliBandana.js"></script>
-    <script src="mantras/Madhav.js"></script>
-    <script src="mantras/Saraswatimata.js"></script>
-    <script src="mantras/Rudrashtakam.js"></script>
-    <script src="mantras/Doha.js"></script>
-    <script src="mantras/Ramayan.js"></script>
-    <script src="mantras/Tulsikrit.js"></script>
-    <script src="mantras/HariSaranam.js"></script>
-    <script src="script.js"></script>
+<body class="bg-sacred min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="bg-amber-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-om text-amber-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="title-font text-4xl md:text-5xl text-gray-800">Mahadevsthan Bhajans</h1>
+                        <p class="text-gray-600">Divine melodies for the soul</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-amber-50 to-amber-100 rounded-2xl p-8 mb-12 shadow-inner">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="title-font text-5xl md:text-6xl text-gray-800 mb-4">Om Namah Shivaya</h2>
+                    <p class="text-gray-700 text-lg mb-6">Immerse yourself in the divine bhajans sung daily at Mahadevsthan. Feel the presence of Hindu Lords through these sacred melodies.</p>
+                    
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="components/images/IMG_0484.jpeg" 
+                         alt="Shiva Lingam" 
+                         class="rounded-xl shadow-lg w-full max-w-md border-4 border-white">
+                </div>
+            </div>
+        </section>
+
+        <!-- Bhajans Section -->
+        <section class="mb-16">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                    <i class="fas fa-music text-amber-600 mr-3"></i> Divine Bhajans Collection
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Bhajan Card 1 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Mangalacharan</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+<p>
+    मंगलम भगवान विष्णु मंगलम गरुड़ ध्वजा । <br>
+    मंगलम पुंडरीकाक्ष मंगलाय तनो हरी ॥
+</p>
+<p>
+    गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः । <br>
+    गुरुः साक्षात् परब्रह्म तस्मै श्री गुरवे नमः ॥
+</p>
+<p>
+    त्वमेव माता च पिता त्वमेव, त्वमेव बन्धुश्च सखा त्वमेव ।<br>
+    त्वमेव विद्या द्रविणम् त्वमेव, त्वमेव सर्वम् मम देव देव ॥
+</p>
+<p>
+    कर्पूरगौरं करुणावतारं संसारसारम् भुजगेन्द्रहारम् ।<br>
+    सदावसन्तं हृदयारविन्दे भवं भवानीसहितं नमामि ॥
+</p>
+<p>
+    नीलाम्बुजश्यामलकोमलाङ्गं सीतासमारोपितवामभागम ।<br>
+    पाणौ महासायकचारूचापं, नमामि रामं रघुवंशनाथम ॥
+</p>
+<p>
+    सदा भवानी दाहिने सन्मुख रहे गणेश ।<br>
+    पांच देव रक्षा करें ब्रह्मा विष्णु महेश ॥
+</p>
+<p>
+    श्रीगुरु चरन सरोज रज निजमनु मुकुरु सुधारि ।<br>
+    बरनउँ रघुबर बिमल जसु जो दायकु फल चारि ॥<br>
+    बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार ।<br>
+    बल बुधि बिद्या देहु मोहिं, हरहु कलेस बिकार ॥
+</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Bhajan Card 2 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">श्री गणेश बन्दना</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        जय गणेश जय गणेश जय गणेश देवा ।<br>
+                                        माता तो पार्वती पिता महादेवा ॥
+                                    </p>
+                                    <p>
+                                        एक दन्त दयावन्त, चतुर भुजाधारी ।<br>
+                                        मस्तक तिलक सिन्दूर सोहे मूसके सवारी ॥
+                                    </p>
+                                    <p>जय गणेश ..........</p>
+
+                                    <p>
+                                        अन्धनको आँख देत कोढ़िनको काया ।<br>
+                                        बाझनको पुत्र देत निर्धनको माया ॥
+                                    </p>
+                                    <p>जय गणेश ..........</p>
+                                    <p>
+                                        लड्डुअनको भोग लगे सन्त करें सेवा ।<br>
+                                        हार चढे फूल चढे और चढे मेवा ॥
+                                    </p>
+                                    <p>जय गणेश ..........</p>
+                                    <p>
+                                        दासनको लाज रखो शम्भु के दुलारे ।<br>
+                                        मेरो मनोरथ पुरन करो जाऊँबली हारी ॥
+                                    </p>
+                                    <p>जय गणेश ..........</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Bhajan Card 3 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">श्री जयदेवकृत गीत गोविन्द</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        श्रितकमलाकुच मण्डल ए धृत </br>    कुण्डल कलित-ललित-वनमाल </br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    दिनमणि मण्डल मण्डन ए भव, </br>    खण्डन मुनिजन-मानस-हंस</br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    कालिय विषधर गञ्जन है भव </br>    रञ्जन यदुकुल-नलिन-दिनेश</br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    मधु-मुर नरक विनाशन ए गरु,</br>    ड़ासन सुरकुल-केलि-निदान</br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    अमल-कमल-दललोचन ए भव,</br>    मोचन त्रिभुवन भवन-निधान</br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    जनक-सुता-कृतभूषण ए जित</br>    दूषण समर-शमित-दशकण्ठ!</br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    अभिनव-जलधर-सुन्दर ए धृत</br>    मन्दर श्रीमुखचन्द्रचकोर</br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    तव चरणे प्रणता वयम् इति</br>    भावय कुरु कुशलं प्रणतेषु, </br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    श्रीजयदेवकवेरिदं ए कुरु</br>    ते मुदम् मंगलमुज्ज्वलगीतम्</br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम् </br>    </br>    श्रितकमलाकुच मण्डल ए धृत </br>    कुण्डल कलित-ललित-वनमाल </br>    </br>    जय जय देव हरे गोपालम् </br>    श्री जयदेव हरे गोविन्दम्
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bhajan Card 4 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">आदिनाथ शिव बन्दना</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        आदिनाथ शिव हर हर शम्भो </br>कैलाशपतिको ध्यान धरो</br> </br>सोही नामको ध्यान धरीके </br>सकल पापको नाश करो</br> </br>इस नदिशा में श्री नारायण </br>शेष शयन करी राज कियो</br> </br>हनुमान शिव लिङ्ग सहित है </br>विघ्नराज है उत्तर दिशा</br> </br>आदिनाथ ..........</br></br>नाम विष्णुमती गंगा बहती है </br>सकल पापको दूर किया</br>नाम बागमती गंगा बहती है</br>सकल पापको दुर किया</br> </br>दक्षिण दिशा में देव अनेक हे </br>आदिनाथ बिचराज किया</br> </br>आदिनाथ ..........</br></br>शालिग्राम दास भक्तनको </br>कुटुम्ब मिलकर भजन किया</br> </br>आदिनाथ हर शम्भो कहिके </br>भक्तिपूर्वक पूजा किया</br> </br>आदिनाथ ..........
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bhajan Card 5 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">काली बन्दना</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        सदा मंगल गरुन काली </br>पुकारछु कालीको नाउँ</br></br>जगतमाता महाकाली </br>पुकारछु कालीको नाउँ</br></br>भजन प्रभुको सधै गाउ</br>चराया प्रभुको सधैं पाउँ</br></br>स्वरूप प्रभुको दर्शन पाउँ </br>पुकारछु कालीको नाउँ</br></br>चरण छोडी कहाँ जाउँ</br>लगाउँ ध्यान बर पाउँ </br></br>तरी संसार पार जाउँ </br>पुकारछु कालीको नाउँ</br></br>दुःखीको दुःख नाश गर्ने </br>कृपा प्रभुको सधैं पाउँ</br></br>जगतमाता महाकाली </br>पुकारछु कालीको नाउँ</br></br>अनाथ छु मूर्ख छु माता </br>चरण छोडी कहाँ जाउँ</br></br>दया राखी शरण लेऊ </br>पुकारछु कालीको नाउँ</br></br>भरोसा छैन कोही मेरो </br>प्रभु देखी कुनै ठाउँ</br></br>अनाथ जानी पिछा लेउ</br>पुकारछु कालीको नाउँ</br></br>सदा मंगल गरुन काली </br>पुकारछु कालीको नाउँ</br></br>जगतमाता महाकाली </br>पुकारछु कालीको नाउँ
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Bhajan Card 6 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">माधव स्तुती</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        दीनबन्धु दयालु माधव, </br>दीनबन्धु कृपालु माधव</br>    </br>करो कृपा रघुपति प्रभु । राम - ३</br></br>दीनबन्धु दयालु माधव, </br>दीनबन्धु कृपालु माधव</br>    </br>करो कृपा रघुपति प्रभु । राम</br></br>भूभार हारनी दुष्ट नाशने, </br>सन्तजन प्रतिपालने । राम</br></br>विविध सर्व गुण रूप धरिके, </br>करत रक्षा तुम प्रभु । राम</br></br>दीनबन्धु दयालु माधव, </br>दीनबन्धु कृपालु माधव</br>    </br>करो कृपा रघुपति प्रभु । राम</br></br>भूभार हारनी दुष्ट नाशने, </br>सन्तजन प्रतिपालने । राम</br></br>विविध सर्व गुण रूप धरिके, </br>करत रक्षा तुम प्रभु । राम</br></br>दीनबन्धु दयालु माधव, </br>दीनबन्धु कृपालु माधव</br>    </br>करो कृपा रघुपति प्रभु । राम
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bhajan Card 7 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">सरस्वती माताको स्तुती</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        सरस्वतीमाता तुम्मको मनाउ ।२। </br>तुम‌को मनाउँ माता तुमको मनाउँ ।२। </br>    </br>सरस्वती..........</br></br>गाउँकी बजाउँगी आफै सुनी रहुगी ।२। </br>मोतियन थाल भरुगी ।२। </br>    </br>सरस्वती..........</br></br>अक्षता चन्दन बेलकी पतिया ।२। </br>अष्ट सुगन्धकी धुप जलाऊँगी में ।२। </br>    </br>सरस्वती..........
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bhajan Card 8 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">ब्रम्हाकृत शिव स्तुती</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+नमामीशमीशान निर्वाणरूपं </br>विभुं व्यापकं ब्रह्म वेदस्वरूपं ।</br>    </br>निजं निर्गुणं निर्विकल्पं निरीहं </br>चिदाकाशमाकाशवासं भजेहें ।१।</br>    </br>निराकारमोंकारमूलं तुरीयं </br>गिरा ग्यान गोतीतमीशं गिरीशं ।</br>    </br>करालं महाकाल कालं कृपालं </br>गुणागार संसारपारं नतोहम् ।२।</br>    </br>तुषाराद्रि संकाश गौरं गभिरं </br>मनोभूत कोटि प्रभा श्रीशरीरं ।</br>    </br>स्फुरन्मौलि कल्लोलिनी चारु गंगा</br>लसद्भालबालेन्दु कंठे भुजंगा ।३। </br>    </br>चलत्कुण्डलं भ्रू सुनेत्रं विशालं </br>प्रसन्नाननं  नीलकण्ठं दयालं ।</br>    </br>मृगाधीशचर्माम्बरं मुण्डमालं </br>प्रियं शंकरं सर्वनाथं भजामि ।४।</br>    </br>प्रचण्डं प्रकृष्टं प्रगल्भं परेशं</br>अखण्डं अजं भानुकोटिप्रकाशं ।</br>    </br>त्रयः शूल निर्मूलनं शूलपाणिं</br>भजेहं भवानीपतिं भावगम्यं ।५। </br>    </br>कालातीत कल्याण कल्पान्तकारी </br>सदा सज्जनानन्ददातापुरारी ।</br>    </br>चिदानन्दसंदोह मोहापहारी </br>प्रसीद प्रसीद प्रभो मन्मथारी ।६। </br>    </br>न यावद् उमानाथ पादारविन्दं </br>भजंतीह लोके परे वा नराणां । </br>    </br>न तावत्सुखं शान्ति सन्तापनाशं </br>प्रसीद प्रभो सर्वभूताधिवासं ।७।</br>    </br>न जानामि योगं जपं नवै पूजां</br>नतोहं सदा सर्वदा शम्भुतुभ्यम् ।</br>    </br>जराजन्मदुःखौघ तातप्यमानं</br>प्रभो पाहि आपन्नमामीश शम्भो ।८।</br>    </br>नमामीशमीशान निर्वाणरूपं </br>विभुं व्यापकं ब्रह्म वेदस्वरूपं ।</br>    </br>नमामीशमीशान निर्वाणरूपं </br></br>रुद्राष्टकमिदं प्रोक्तं विप्रेण हरतोषये ।</br>ये पठन्ति नरा भक्त्या तेषां शम्भुः प्रसीदति ।९।</br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bhajan Card 9 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">दोहा</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        सुनि बिनती सर्वज्ञ शिव देखि बिप्र अनुरागु ।</br>पुनि मंदिर नव वाणी हे भई द्विजवर अब मागु ॥</br>    </br>जो प्रसन्न प्रभु मोहिपर नाथ दीनपर नेहु ।</br>निजपद भक्ति देहु प्रभु पुनि दुसर वर देहु ॥</br></br>तब माया बस जीव जड संतत फिरही भुलान ।</br>तेहिपर क्रोध, न करिय प्रभु कृपासिंधु भगवान ॥</br></br>शंकर दीनदयालु अब यहि पर होहु कृपाल ।</br>शापअनुग्रह होइ जेहि नाथ थोरही काल ॥
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Bhajan Card 10 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">श्री रामायणजीको आरती</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        आरती श्री रामायण जीकी ।</br>कीरति कलित ललित सिया पीकी ॥</br>    </br>आरती श्री रामायण जीकी ।</br></br>गावत ब्रम्हादिक मुनि नारद ।</br>वाल्मिकी विज्ञान विशारद ॥</br>शुकसनकादिक शेष अरु शारद ।</br>वरणि पवनसुत कीरति नीकी ॥</br>    </br>आरती श्री रामायण जीकी ।</br></br>संतत गावत शम्भु भवानी </br>अरु घटसम्भव मुनि वरज्ञानी </br>व्यास आदि कवि बर्ज बखानी</br>कागभुशुंडि गरुड़के हीकी ॥</br>    </br>आरती श्री रामायण जीकी ।</br></br>चारौ वेद पुराण अष्टदश ।</br>छऔ शास्त्र सब ग्रंथनको रस ॥</br>मुनिजन धन सन्तनको सरबस ।</br>सार अंश सम्मत सब हीकी ॥</br></br>आरती श्री रामायण जीकी ।</br></br>कलिमल हरणी विषय रस फीकी ।</br>सुभग सिंगार मुक्ति युवतीकी </br>हरणी रोग भव भूरी अमिकी </br>तात मात सब बिधि तुलसीकी</br>    </br>आरती....., कलिमल....</br></br>आरती श्री रामायण जीकी ।</br>कीरति कलित ललित सिया पीकी ॥</br>    </br>आरती श्री रामायण जीकी ।
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Bhajan Card 6 -->
+                <div class="bg-white rounded-xl overflow-hidden bhajan-card">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">तुलसीकृत रामायण</h3>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="audio-player rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <button class="bg-amber-600 hover:bg-amber-700 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex-1">
+                                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-amber-500 w-0"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                        <span>2:15</span>
+                                        <span>6:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-amber-600 hover:text-amber-700 flex items-center lyrics-toggle">
+                                <i class="fas fa-align-left mr-2"></i> View Lyrics
+                            </button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-amber-600">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lyrics-container mt-4">
+                            <div class="bg-amber-50 rounded-lg p-4">
+                                <div class="text-gray-700 space-y-4">
+                                    <p>
+                                        नमामीश घनज्ञान रघुवंश दासम् </br>सदानन्ददाता सुविधा प्रकाशम् ॥ </br>    </br>विशद् शैल नीलं कृपालु निवासम् </br>चरणावुजं सेवितं पापनाशम् ।१। </br>    </br>गत मोहमारादि शुल विशालं </br>हरत पॉप सन्ताप भवशोकजालम् ॥ </br>    </br>नमो काकपादं सुबुद्धि सुशिलम् </br>सदाभक्त वात्सल्य वासादिनीलम् ।२। </br>    </br>प्रसन्नाननं नीलबदनं सुश्यामं </br>नमो पाहि शरणं सुरामाभिरामम् ॥ </br>    </br>जान्यो उमानाथ यशुनाथनामं। </br>देखो कृपासिन्धुको रामधामम् ।३। </br>    </br>इच्छावपुष काक कल्याणकारी </br>जिन्हें एक आशा अयोध्याबिहारी ॥ </br>    </br>भागी सकल वासना त्रासभारम् </br>दयानाथ किन्हो अविधा-प्रहारम् ।४। </br>    </br>सगुण ब्रम्ह लीला धराभार नाशं </br>सुन्यो रामअवतार मोहं विनाशम ॥</br>    </br>जान्यों दनुज नाशनं विश्ववासं </br>चिदानन्द सन्दोह भक्ति विलासम ।५। </br>    </br>अचल ज्ञान गोतित मन्त्रं विशालम् </br>पायो कृपानाथ निज भाग्य भालम् ॥</br>    </br>विगत षष्ट रोग अयोग दयालं </br>नमो पाही शरणं नमामि कृपालम् ।६।</br>    </br>नमामीश घनज्ञान रघुवंश दासम् </br>सदानन्ददाता सुविधा प्रकाशम् ॥ </br>    </br>नमामीश घनज्ञान</br></br>सरसंरी सम पावन भयो नाथ हृदय अब मोर </br>जन्म जन्म छुटे नही नाथ पादाम्बुज तोर ॥
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="trishul-divider my-12"></div>
+
+        <!-- Temple Info Section -->
+        <section class="mb-16">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3">
+                        <img src="components/images/IMG_0485.jpeg" 
+                             alt="Mahadevsthan" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-temple text-amber-600 mr-3"></i> About Mahadevsthan
+                        </h2>
+                        <p class="text-gray-700 mb-6">The sacred Mahadevsthan is a divine abode where devotees gather every evening to sing bhajans and perform aarti in praise of 
+                            Lord Shiva, Rama, Ganesh, Saraswati and more. This temple has been a spiritual center for thousands of devotees seeking blessings, peace, and divine connection.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-clock text-amber-600 mr-2"></i> Daily Schedule
+                                </h3>
+                                <ul class="text-gray-700 space-y-2">
+                                    <li>Morning Aarti: 7:30 AM</li>
+                                    <li>Evening Bhajans: 5:30 PM</li>
+                                </ul>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-info-circle text-amber-600 mr-2"></i> Temple Features
+                                </h3>
+                                <ul class="text-gray-700 space-y-2">
+                                    <li>Sacred Shiva Lingam</li>
+                                    <li>Bhajan Hall</li>
+                                    <li>Prasadam Distribution</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button 
+                            class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full transition flex items-center"
+                            onclick="window.open('https://maps.app.goo.gl/d8ZE25gSgvwyYhyYA', '_blank')"
+                            >
+                            <i class="fas fa-map-marker-alt mr-2"></i> Visit Temple Location
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Devotee Experiences</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-amber-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Rajesh Kumar</h4>
+                            <p class="text-gray-500 text-sm">Regular Devotee</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"The evening bhajans at Mahadevsthan transport me to a different world. The divine energy is palpable and the melodies stay with me throughout the week."</p>
+                    <div class="mt-4 text-amber-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-amber-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Priya Sharma</h4>
+                            <p class="text-gray-500 text-sm">New Devotee</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"I started coming to the temple during a difficult time in my life. The bhajans gave me strength and peace I couldn't find anywhere else."</p>
+                    <div class="mt-4 text-amber-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-amber-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Amit Patel</h4>
+                            <p class="text-gray-500 text-sm">Volunteer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Helping with the bhajan sessions has been the most rewarding experience. Seeing devotees connect with Lord Shiva through music is truly special."</p>
+                    <div class="mt-4 text-amber-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="title-font text-3xl mb-4">Mahadevsthan</h3>
+                    <p class="text-gray-400">Divine bhajans for spiritual awakening and connection with Lord Shiva.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Bhajans</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Aarti Schedule</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Temple Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shiva Mantras</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Puja Vidhi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Festival Calendar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Volunteer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Donate</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to receive updates on new bhajans and temple events.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="bg-gray-700 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-amber-500 w-full">
+                        <button class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>© 2023 Mahadevsthan Bhajans. No rights reserved.</p>
+                <p class="mt-2 om-symbol text-2xl">ॐ नमः शिवाय</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle lyrics visibility
+        document.querySelectorAll('.lyrics-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const lyricsContainer = this.closest('.bhajan-card').querySelector('.lyrics-container');
+                lyricsContainer.classList.toggle('show');
+                
+                // Change icon based on state
+                const icon = this.querySelector('i');
+                if (lyricsContainer.classList.contains('show')) {
+                    icon.classList.remove('fa-align-left');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-align-left');
+                }
+            });
+        });
+        
+
+
+        // audio
+        const audioElements = [];
+
+  document.querySelectorAll('.audio-player').forEach((player, index) => {
+    const playButton = player.querySelector('button');
+    const icon = playButton.querySelector('i');
+    const progressBar = player.querySelector('.h-full.bg-amber-500');
+    const [currentTimeEl, durationEl] = player.querySelectorAll('.text-xs span');
+
+    const audio = new Audio(`components/audios/${index + 1}.mp3`);
+    audioElements.push(audio);
+
+    // Format seconds to mm:ss
+    const formatTime = (seconds) => {
+      const min = Math.floor(seconds / 60);
+      const sec = Math.floor(seconds % 60);
+      return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+    };
+
+    playButton.addEventListener('click', function () {
+      const isPlaying = playButton.classList.contains('playing');
+
+      audioElements.forEach((a, i) => {
+        if (i !== index) {
+          a.pause();
+          a.currentTime = 0;
+          const otherButton = document.querySelectorAll('.audio-player button')[i];
+          const otherIcon = otherButton.querySelector('i');
+          otherButton.classList.remove('playing');
+          otherIcon.className = 'fas fa-play';
+        }
+      });
+
+      if (isPlaying) {
+        audio.pause();
+        icon.className = 'fas fa-play';
+        playButton.classList.remove('playing');
+      } else {
+        audio.play();
+        icon.className = 'fas fa-pause';
+        playButton.classList.add('playing');
+      }
+    });
+
+    // Update time and progress
+    audio.addEventListener('timeupdate', () => {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = `${percent}%`;
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+    });
+
+    // Update duration once metadata is loaded
+    audio.addEventListener('loadedmetadata', () => {
+      durationEl.textContent = formatTime(audio.duration);
+    });
+
+    // Reset on end
+    audio.addEventListener('ended', () => {
+      icon.className = 'fas fa-play';
+      playButton.classList.remove('playing');
+      progressBar.style.width = '0%';
+      currentTimeEl.textContent = '0:00';
+    });
+  });
+    </script>
 </body>
 </html>
