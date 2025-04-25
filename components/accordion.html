@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accordion - Only One Open</title>
+  <style>
+    .accordion {
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      border: none;
+      background-color: #eee;
+      transition: background-color 0.2s ease;
+    }
+
+    .accordion:hover {
+      background-color: #ccc;
+    }
+
+    .panel {
+      padding: 0 10px;
+      display: none;
+      background-color: #f1f1f1;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Accordion - Only One Open</h2>
+
+<button class="accordion">Section 1</button>
+<div class="panel">
+  <p>This is the content for section 1.</p>
+</div>
+
+<button class="accordion">Section 2</button>
+<div class="panel">
+  <p>This is the content for section 2.</p>
+</div>
+
+<button class="accordion">Section 3</button>
+<div class="panel">
+  <p>This is the content for section 3.</p>
+</div>
+
+<script>
+  const acc = document.querySelectorAll(".accordion");
+
+  acc.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const panel = this.nextElementSibling;
+      const isOpen = panel.style.display === "block";
+
+      // Close all panels first
+      document.querySelectorAll(".panel").forEach(p => {
+        p.style.display = "none";
+      });
+
+      // Toggle current panel only if it wasn't open already
+      if (!isOpen) {
+        panel.style.display = "block";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
